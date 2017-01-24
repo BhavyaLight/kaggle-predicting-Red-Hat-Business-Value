@@ -1,1 +1,2 @@
+[![Stories in Ready](https://badge.waffle.io/BhavyaLight/kaggle-predicting-Red-Hat-Business-Value.png?label=ready&title=Ready)](https://waffle.io/BhavyaLight/kaggle-predicting-Red-Hat-Business-Value)
 # kaggle-predicting-Red-Hat-Business-Value
