@@ -91,7 +91,7 @@ def encode_labels(data_directory):
     This assumes null values have no significance
     """
     # Read the data set people.csv, common for both files
-    file_path_people = get_file_path(data_directory, PEOPLE_FILE_PATH)
+    file_path_people = get_file_path(data_directory, PEOPLE_FILE)
     people_df = pd.read_csv(file_path_people, parse_dates=["date"], true_values=["True"], false_values=["False"])
 
     # Introduce a category for null values called category 0 since scikit needs numeric data
@@ -103,7 +103,7 @@ def encode_labels(data_directory):
     # Rename columns for people.csv to avoid confusion
     people_df = people_df.rename(columns=lambda x: "people_" + x)
 
-    for key, file_path in {"train": ACTIVITIES_FILE_PATH, "test": TEST_DATA_FILE_PATH}.items():
+    for key, file_path in {"train": ACTIVITIES_FILE, "test": TEST_DATA_FILE}.items():
         file_path_activity = get_file_path(data_directory, file_path)
         activity_df = pd.read_csv(file_path_activity, parse_dates=["date"])
 
