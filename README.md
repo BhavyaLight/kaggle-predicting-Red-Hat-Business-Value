@@ -6,14 +6,15 @@
 ### Requirements
 1. Docker
 #### Installation steps:
-Pull the image from docker hub 
+Pull the image from docker hub  
 `Docker pull bhavya2107/machinelearning`  
-Or navigate to the current project directory, make sure the requirements.txt exists and 
+
+Or navigate to the current project directory, make sure the requirements.txt exists and   
 `Docker build .`  
 This step will take some time.  
 
 #### Run the docker container
-Navigate into the github directory for this project and run: 
+Navigate into the github directory for this project and run:   
 `docker run -it -v $(pwd):/src bhavya2107/machinelearning`  
 
 ## Pre-processing steps:
