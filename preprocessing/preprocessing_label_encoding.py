@@ -11,11 +11,11 @@ import argparse
 from sklearn.preprocessing import LabelEncoder
 
 # Path to people.csv from ReadHatKaggle data set
-PEOPLE_FILE_PATH = '../Data/people.csv'
+PEOPLE_FILE = 'people.csv'
 # Path to act_train.csv from RedHatKaggle data set
-ACTIVITIES_FILE_PATH = '../Data/act_train.csv'
+ACTIVITIES_FILE = 'act_train.csv'
 # Path to test.csv from RedHatKaggle data set
-TEST_DATA_FILE_PATH = '../Data/act_test.csv'
+TEST_DATA_FILE = 'act_test.csv'
 
 # Value to assign to null categories
 NULL_VALUE = 'type 0'
