@@ -13,9 +13,16 @@ Or navigate to the current project directory, make sure the requirements.txt exi
 `Docker build .`
 This step will take some time.  
 
-
-### Run the docker container
+#### Run the docker container
 
 Navigate into the github directory for this project and run: 
 
 `docker run -it -v $(pwd):/src bhavya2107/machinelearning`
+
+## Pre-processing steps:
+
+Navigate into the pre-processing folder. 
+Run code for label encoding:
+`python preprocessing_label_encoding.py --data_directory $PWD/Data`
+
+*Note*: Before running the above code, download the data from Kaggle and store it in a directory called 'Data'. Extract the files and do not change the names.
