@@ -11,11 +11,11 @@ import argparse
 from sklearn.preprocessing import LabelEncoder
 
 # Path to people.csv from ReadHatKaggle data set
-PEOPLE_FILE_PATH = 'people.csv'
+PEOPLE_FILE_PATH = '../Data/people.csv'
 # Path to act_train.csv from RedHatKaggle data set
-ACTIVITIES_FILE_PATH = 'act_train.csv'
+ACTIVITIES_FILE_PATH = '../Data/act_train.csv'
 # Path to test.csv from RedHatKaggle data set
-TEST_DATA_FILE_PATH = 'act_test.csv'
+TEST_DATA_FILE_PATH = '../Data/act_test.csv'
 
 # Value to assign to null categories
 NULL_VALUE = 'type 0'
@@ -34,7 +34,7 @@ def get_file_path(directory, filename):
     return os.path.join(directory, filename)
 
 
-def fill_null(df, fill_with=NULL_VALUE):
+def fill_null(df, fill_with = NULL_VALUE):
     """ Fills null values with 'type 0'
     This assumes null values have no significance
     """
@@ -50,7 +50,7 @@ def convert_dates(df):
     df['quarter'] = df['date'].dt.quarter
     df['year'] = df['date'].dt.year
     df['week'] = df['date'].dt.week
-    df['dayOfYear'] = df['date'].dt.day
+    df['dayOfMonth'] = df['date'].dt.day
     return df
 
 
