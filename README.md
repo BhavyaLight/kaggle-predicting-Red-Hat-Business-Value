@@ -1,7 +1,9 @@
 # kaggle-predicting-Red-Hat-Business-Value
 
 ## About Columns
+
 The total unique values available in the train dataset
+```
 activity_id: 2197291
 people_char_1: 2
 people_group_1: 29899
@@ -68,3 +70,4 @@ quarter: 4
 year: 2
 week: 52
 dayOfMonth: 31
+```
