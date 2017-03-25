@@ -22,7 +22,7 @@ Navigate into the github directory for this project and run:
 ## Pre-processing steps:
 
 Navigate into the pre-processing folder. 
-Run code for label encoding:
+Run code for label encoding:  
 `python preprocessing_label_encoding.py --data_directory $PWD/Data`
 
 *Note*: Before running the above code, download the data from Kaggle and store it in a directory called 'Data'. Extract the files and do not change the names.
