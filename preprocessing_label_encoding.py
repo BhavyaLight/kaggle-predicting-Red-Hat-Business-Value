@@ -81,7 +81,7 @@ def category_to_label_encoding(dataset, identity_columns=ID):
 def write_out(df, output):
     df.drop('outcome', errors='ignore', axis=1).set_index(['activity_id']).to_csv(output + "_features.csv")
     if 'outcome' in df.columns:
-        df['outcome'].set_index(['activity_id']).to_csv(output + "_output.csv")
+        df[['activity_id','outcome']].set_index(['activity_id']).to_csv(output + "_output.csv")
 
 
 def encode_labels(data_directory):
