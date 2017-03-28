@@ -71,6 +71,8 @@ train_output.sort_values(by='activity_id',ascending=True, inplace=True)
 
 # Function to one hot encode all values
 start = time.time()
+## SAMPLE: without dropping char_10
 train_arr = category_to_one_hot(train_data_df, NON_FEATURE, CONT)
+## SAMPLE: To drop char_10 you add it in NON_FEATURE and then run this code. Okay?
 end = time.time()
 print(end-start)
