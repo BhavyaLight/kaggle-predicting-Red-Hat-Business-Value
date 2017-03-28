@@ -24,3 +24,4 @@ Once inside the docker container, navigate into the pre-processing folder.
 *Note*: Before running the above code, download the data from Kaggle and store it in a directory called 'Data'. Extract the files and do not change the names.
 2. Run code for reducing redundant feature for performance improvement:
 `python preprocessing_elimate_redundancy.py --data_directory <file-path-to-Data-directory>`
+*Note*: Before running the above code, label encoded files from step 1 must be present in your data directory. Do not change their names.
