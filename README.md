@@ -19,6 +19,8 @@ Navigate into the github directory for this project and run:
 
 ## Pre-processing steps:
 Once inside the docker container, navigate into the pre-processing folder. 
-Run code for label encoding:  
+1. Run code for label encoding:  
 `python preprocessing_label_encoding.py --data_directory <file-path-to-Data-directory>`  
 *Note*: Before running the above code, download the data from Kaggle and store it in a directory called 'Data'. Extract the files and do not change the names.
+2. Run code for reducing redundant feature for performance improvement:
+`python preprocessing_elimate_redundancy.py --data_directory <file-path-to-Data-directory>`
