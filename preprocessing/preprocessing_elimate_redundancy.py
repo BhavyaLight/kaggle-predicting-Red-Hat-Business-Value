@@ -99,9 +99,9 @@ def eliminate_values(data_directory):
     print("Time taken to reduce: "+str(end-start))
 
     # Save files
-    file_save = get_file_path(data_directory, 'train')
+    file_save = get_file_path(data_directory, 'act_train')
     write_out(train_data_df, file_save)
-    file_save = get_file_path(data_directory, 'test')
+    file_save = get_file_path(data_directory, 'act_test')
     write_out(test_data_df, file_save)
 
 if __name__ == '__main__':
