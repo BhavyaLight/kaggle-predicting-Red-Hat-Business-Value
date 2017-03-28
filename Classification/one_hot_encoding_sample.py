@@ -69,10 +69,14 @@ train_data_df.sort_values(by=['activity_id'],ascending=True, inplace=True)
 train_output = pd.read_csv(OUTPUT)
 train_output.sort_values(by='activity_id',ascending=True, inplace=True)
 
+
+### NOTE IT IS MORE MEMORY EFFICIENT IF YOU SPLIT THE DATA INTO TRAIN AND TEST SETS FIRST
+### AND THEN DO THE ONE HOT ENCODING OTHERWISE PROGRAM WILL CRASH FOR SURE!
+
 # Function to one hot encode all values
 start = time.time()
 ## SAMPLE: without dropping char_10
 train_arr = category_to_one_hot(train_data_df, NON_FEATURE, CONT)
-## SAMPLE: To drop char_10 you add it in NON_FEATURE and then run this code. Okay?
+## SAMPLE: try to run with char_10 first, if it does crash, you add it in NON_FEATURE and then run this code. Okay?
 end = time.time()
 print(end-start)
