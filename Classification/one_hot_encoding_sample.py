@@ -58,7 +58,7 @@ def category_to_one_hot(dataset, non_feature, continuous_feature):
     # boolean_column is not the column name but index
     print("Done filtering columns...")
     grd_enc = OneHotEncoder(categorical_features=boolean_column)
-    encoded_arr = grd_enc.fit_transform(ds).toarray()
+    encoded_arr = grd_enc.fit_transform(ds)
     return encoded_arr
 
 # Read the data set. Note this dataset does not contain the 'outcome' columns
