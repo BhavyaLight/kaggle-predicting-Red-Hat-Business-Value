@@ -1,6 +1,6 @@
 #################################
-# Takes in the train and test data 
-# set and transforms it 
+# Takes in the train and test data
+# set and transforms it
 # into merged, label encoded values
 #################################
 
@@ -10,22 +10,22 @@ import pandas as pd
 import argparse
 from sklearn.preprocessing import LabelEncoder
 
-# Path to people.csv from ReadHatKaggle data set
+# File name for people.csv from ReadHatKaggle data set
 PEOPLE_FILE = 'people.csv'
-# Path to act_train.csv from RedHatKaggle data set
+# File name for act_train.csv from RedHatKaggle data set
 ACTIVITIES_FILE = 'act_train.csv'
-# Path to test.csv from RedHatKaggle data set
+# File name for test.csv from RedHatKaggle data set
 TEST_DATA_FILE = 'act_test.csv'
 
 # Value to assign to null categories
 NULL_VALUE = 'type 0'
 
-# COLUMNS in people.csv and activity.csv 
+# COLUMNS in people.csv and activity.csv
 PEOPLE_ID = "people_people_id"
 ACTIVITY_ID = "people_id"
 
 # Identity columns (Non-feature)
-ID = ['activity_id','people_id']
+ID = ['activity_id', 'people_id']
 
 
 def get_file_path(directory, filename):
@@ -51,6 +51,7 @@ def convert_dates(df):
     df['year'] = df['date'].dt.year
     df['week'] = df['date'].dt.week
     df['dayOfMonth'] = df['date'].dt.day
+    df['weekend'] = (df['date'].dt.weekday >= 5).astype(int)
     return df
 
 
@@ -73,7 +74,7 @@ def category_to_label_encoding(dataset, identity_columns=ID):
                 le = LabelEncoder()
                 le.fit(['True', 'False'])
                 dataset[column] = le.transform(dataset[column])
-        elif column==ACTIVITY_ID:
+        elif column == ACTIVITY_ID:
             dataset[column] = dataset[column].apply(lambda x: str(x).split('_')[1]).astype(np.float)
     return dataset
 
