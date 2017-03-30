@@ -4,10 +4,10 @@ import os
 import argparse
 import time
 
-# Path to people.csv from ReadHatKaggle data set
+# File name for ReadHatKaggle train data set preprocessed from label encoding
 TRAIN_FILE = 'act_train_features.csv'
 
-# Path to the test file
+# File name for test data set preprocessed from label encoding
 TEST_FILE = 'act_test_features.csv'
 
 # Non feature
@@ -31,7 +31,7 @@ CATEGORICAL_BINARY = ['people_char_10', 'people_char_11', 'people_char_12',
                       'people_char_28', 'people_char_29', 'people_char_30',
                       'people_char_31', 'people_char_32', 'people_char_33',
                       'people_char_34', 'people_char_35', 'people_char_36',
-                      'people_char_37']
+                      'people_char_37', 'weekend']
 
 # Continuous categories
 CONT = ['people_days', 'days',
@@ -86,17 +86,27 @@ def eliminate_values(data_directory):
     test_file_path = get_file_path(data_directory, TEST_FILE)
 
     # Read the train data set
-    train_data_df = pd.read_csv(train_file_path,parse_dates=["date"])
+    train_data_df = pd.read_csv(train_file_path, parse_dates=["date"])
 
     # Read the test data set
-    test_data_df = pd.read_csv(test_file_path,parse_dates=["date"])
+    test_data_df = pd.read_csv(test_file_path, parse_dates=["date"])
 
     # Function to help reduce exploding dimensions
     start = time.time()
     for column in CATEGORICAL_DATA:
-        train_data_df, test_data_df = remove_redundant(train_data_df, test_data_df, column, 99999)
+        train_data_df, test_data_df = remove_redundant(train_data_df, test_data_df, column, 9999999)
     end = time.time()
     print("Time taken to reduce: "+str(end-start))
+
+    # Hack: Inconsistency in total category when TEST is
+    # a complete subset of TRAIN, thus adding an additional row
+    dummy_row = test_data_df[:1]
+    for col in ['people_char_3', 'char_1', 'char_2', 'char_5']:
+        dummy_row.set_value(dummy_row.index[0], col, 9999999)
+    dummy_row.set_value(dummy_row.index[0], 'activity_id', 'act_0')
+
+    # Add it to test df
+    test_data_df = pd.concat([test_data_df,dummy_row],ignore_index=True)
 
     # Save files
     file_save = get_file_path(data_directory, 'act_train')
