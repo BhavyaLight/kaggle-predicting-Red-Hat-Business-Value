@@ -5,10 +5,10 @@ import argparse
 import time
 
 # File name for ReadHatKaggle train data set preprocessed from label encoding
-TRAIN_FILE = 'act_train_features.csv'
+TRAIN_FILE = 'manipulated_train.csv'
 
 # File name for test data set preprocessed from label encoding
-TEST_FILE = 'act_test_features.csv'
+TEST_FILE = 'manipulated_test.csv'
 
 # Non feature
 NON_FEATURE = ['activity_id', 'people_id', 'date', 'people_date']
@@ -19,7 +19,7 @@ CATEGORICAL_DATA = ['people_char_1', 'people_char_2','people_group_1',
                     'people_char_6', 'people_char_7', 'people_char_8',
                     'people_char_9', 'activity_category',
                     'char_1', 'char_2', 'char_3', 'char_4', 'char_5', 'char_6',
-                    'char_7', 'char_8', 'char_9', 'char_10']
+                    'char_7', 'char_8', 'char_9']
 
 # Already in a one-hot encoded form
 CATEGORICAL_BINARY = ['people_char_10', 'people_char_11', 'people_char_12',
@@ -40,7 +40,7 @@ CONT = ['people_days', 'days',
         'people_week', 'week',
         'people_dayOfMonth', 'dayOfMonth',
         'people_year', 'year',
-        'people_char_38']
+        'people_char_38', 'hat_trick', 'char_10']
 
 
 def get_file_path(directory, filename):
@@ -97,21 +97,21 @@ def eliminate_values(data_directory):
         train_data_df, test_data_df = remove_redundant(train_data_df, test_data_df, column, 9999999)
     end = time.time()
     print("Time taken to reduce: "+str(end-start))
-
-    # Hack: Inconsistency in total category when TEST is
-    # a complete subset of TRAIN, thus adding an additional row
-    dummy_row = test_data_df[:1]
-    for col in ['people_char_3', 'char_1', 'char_2', 'char_5']:
-        dummy_row.set_value(dummy_row.index[0], col, 9999999)
-    dummy_row.set_value(dummy_row.index[0], 'activity_id', 'act_0')
-
-    # Add it to test df
-    test_data_df = pd.concat([test_data_df,dummy_row],ignore_index=True)
+    #
+    # # Hack: Inconsistency in total category when TEST is
+    # # a complete subset of TRAIN, thus adding an additional row
+    # dummy_row = test_data_df[:1]
+    # for col in ['people_char_3', 'char_1', 'char_2', 'char_5']:
+    #     dummy_row.set_value(dummy_row.index[0], col, 9999999)
+    # dummy_row.set_value(dummy_row.index[0], 'activity_id', 'act_0')
+    #
+    # # Add it to test df
+    # test_data_df = pd.concat([test_data_df,dummy_row],ignore_index=True)
 
     # Save files
-    file_save = get_file_path(data_directory, 'act_train')
+    file_save = get_file_path(data_directory, 'act_train_manipulated')
     write_out(train_data_df, file_save)
-    file_save = get_file_path(data_directory, 'act_test')
+    file_save = get_file_path(data_directory, 'act_test_manipulated')
     write_out(test_data_df, file_save)
 
 if __name__ == '__main__':
