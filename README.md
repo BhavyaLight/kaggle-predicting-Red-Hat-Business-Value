@@ -4,26 +4,21 @@
 ## Development set up
 
 ### Requirements
-1. Docker
-#### Installation steps:
-Pull the image from docker hub  
-`Docker pull bhavya2107/machinelearning`  
-
-Or navigate to the current project directory, make sure the requirements.txt exists and   
-`Docker build .`  
-This step will take some time.  
-
-#### Run the docker container
-Navigate into the github directory for this project and run:   
-`docker run -it -v $(pwd):/src bhavya2107/machinelearning`  
+1. Anaconda installation with multithreading xgb (local set up)
+2. xgboost installation is not supported by anaconda or pip - so needs to be installed manually on your local drive with instructions from their docs (However, the documentation is slightly tricky)
+`https://github.com/dmlc/xgboost/blob/master/doc/build.md`
 
 ## Pre-processing steps:
-Once inside the docker container, navigate into the pre-processing folder. 
+0. Create a 'Data' folder. Store the unzipped data files, also create a 'pickle' folder inside the data folder
 1. Run code for label encoding:  
 `python preprocessing_label_encoding.py --data_directory <file-path-to-Data-directory>`  
 *Note*: Before running the above code, download the data from Kaggle and store it in a directory called 'Data'. Extract the files and do not change the names.
-2. Run code for reducing redundant feature for performance improvement:  
-`python preprocessing_elimate_redundancy.py --data_directory <file-path-to-Data-directory>`  
-*Note*: Before running the above code, label encoded files from step 1 must be present in your data directory. Do not change their names.  
-ERROR HACK: A slight bug, which has not been automatically corrected and needs to be done manually as of now.  
-After step 2, open the `act_test_features_reduced.csv` and insert a row. Copy and paste any row, change the activity id to `act_0` and change the cell values for _people_char_3, char_1, char_2, char_5_ columns to '99999'.
+2. Run DimensionalityReduction_with17304_removal.ipynb
+3. Run PreprocessingInterpolation.ipynb
+4. Run Preprocessing_dateFeatures.ipynb
+5. Run group_outcome_change.ipynb
+6. Run Preprocessing_merging.ipynb.
+** Note: _ Preprocessing_merging.ipynb required you to check if all categorical variable are one-hot-encodable i.e. there are no inconsistency in the total unique value in a OHE column in test and train. An additional row maybe added to make it consistent. See comment block in the file **
+7. Run xgboost.ipynb
+
+_Additional Note:_ Depending on the path to your data folder, you may need to change file paths in the ipynb. These are always present at the beginning of each notebook.
