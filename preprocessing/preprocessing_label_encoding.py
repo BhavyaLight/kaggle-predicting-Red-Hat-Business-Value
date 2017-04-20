@@ -107,7 +107,7 @@ def encode_labels(data_directory):
     for key, file_path in {"train": ACTIVITIES_FILE, "test": TEST_DATA_FILE}.items():
         file_path_activity = get_file_path(data_directory, file_path)
         activity_df = pd.read_csv(file_path_activity, parse_dates=["date"])
-        activity_df.set_index("activity_id", inplace=True)
+        # activity_df.set_index("activity_id", inplace=True)
 
         # Introduce a category for null values called category 0 since scikit needs numeric data
         activity_df = fill_null(activity_df)
