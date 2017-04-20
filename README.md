@@ -11,7 +11,7 @@
 ## Pre-processing steps:
 0. Create a 'Data' folder. Store the unzipped data files, also create a 'pickle' folder inside the data folder
 1. Run code for label encoding:  
-`python preprocessing_label_encoding.py --data_directory <file-path-to-Data-directory>`  
+`python preprocessing/preprocessing_label_encoding.py --data_directory <file-path-to-Data-directory>`  
 *Note*: Before running the above code, download the data from Kaggle and store it in a directory called 'Data'. Extract the files and do not change the names.
 2. Run DimensionalityReduction_with17304_removal.ipynb
 3. Run PreprocessingInterpolation.ipynb
