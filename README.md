@@ -4,7 +4,7 @@
 ## Development set up
 
 ### Requirements
-1. Anaconda installation with multithreading xgb (local set up)
+1. Anaconda installation with *multithreading* xgb (local set up). (We found the single-threading version to give lower scores on the same model.)
 2. xgboost installation is not supported by anaconda or pip - so needs to be installed manually on your local drive with instructions from their docs (However, the documentation is slightly tricky)
 `https://github.com/dmlc/xgboost/blob/master/doc/build.md`
 
