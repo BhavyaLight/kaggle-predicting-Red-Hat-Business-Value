@@ -1,6 +1,9 @@
 [![Stories in Ready](https://badge.waffle.io/BhavyaLight/kaggle-predicting-Red-Hat-Business-Value.png?label=ready&title=Ready)](https://waffle.io/BhavyaLight/kaggle-predicting-Red-Hat-Business-Value)
 # kaggle-predicting-Red-Hat-Business-Value
 
+## The folder contains all the classification methods used. However, the steps below are to be followed to achieve the best results achieved.
+## Moreover, the result on running the model may not be exactly the same. This is because of the differences in the system and randomness in the models.
+
 ## Development set up
 
 ### Requirements
@@ -21,4 +24,4 @@
 ** Note: _ Preprocessing_merging.ipynb required you to check if all categorical variable are one-hot-encodable i.e. there are no inconsistency in the total unique value in a OHE column in test and train. An additional row maybe added to make it consistent. See comment block in the file **
 7. Run xgboost.ipynb
 
-_Additional Note:_ Depending on the path to your data folder, you may need to change file paths in the ipynb. These are always present at the beginning of each notebook.
+_Additional Note:_ Depending on the path to your data folder, you may need to change file paths in the ipynb files. These are always present at the beginning of each notebook.
